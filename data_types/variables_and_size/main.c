@@ -1,7 +1,22 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 
-int main(){
+void var();
+void test();
+
+
+int main(int argc, char *argv[]) {
+    if (argc > 1 && strcmp(argv[1], "--test") == 0) {
+        test();
+    } else {
+        var();
+    }
+
+    return 0;
+}
+
+void var(){
 
 int a = 10;
 
@@ -30,7 +45,16 @@ printf("double: %.2f, размер: %zu байт\n", i, sizeof(i));
 printf("char: %c, размер: %zu байт\n", f, sizeof(f));
 
 printf("bool: %d, размер: %zu байт\n", g, sizeof(g));
+}
 
-return 0;
+void test(){
+    printf("Положительный: char = 1 байт ");
+    if (sizeof(char) == 1) 
+    printf ("OK\n");
+    else printf("FAIL\n");
 
+    printf("Отрицательный: int не 1 байт ");
+    if (sizeof(int) != 1) 
+    printf ("OK\n");
+    else printf("FAIL\n");
 }
